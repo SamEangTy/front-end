@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// import './App.css';
+import CustomerPage from './Page/Customer/Customer';
+import DashBoard from './Page/DashBoard/DashBoard';
+import ProductPage from './Page/Product/Product';
+import LayoutOne from './component/Layout/Layout';
+import LoginPage from './Page/Login/LoginPage';
 
 function App() {
+  const isLogin = localStorage.getItem('is_login') == "1" // true
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <BrowserRouter>
+    {isLogin ?
+    <LayoutOne>
+      <Routes>
+        <Route path='/' element={<DashBoard/>}/>
+        <Route path='/customer' element={<CustomerPage/>}/>
+        <Route path='/product' element={<ProductPage/>}/>
+      </Routes>
+    </LayoutOne>
+    :
+    <Routes>
+        <Route path='/login' element={<LoginPage/>}/>
+    </Routes>
+    }
+  </BrowserRouter>
   );
 }
 
