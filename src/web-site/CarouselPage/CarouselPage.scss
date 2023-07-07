@@ -1,0 +1,38 @@
+.img{
+        height: 600px;
+        color: #fff;
+        line-height: 160px;
+        text-align: center;
+        background: #364d79;
+        background-size: cover;
+        width: 100%;
+}
+div{
+    position: relative;
+    .iconb{
+        position: absolute;
+        background-color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        padding: 6px;
+        top: 50%;
+        left: 10%;
+    }
+    .iconn{
+        position: absolute;
+        background-color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        padding: 6px;
+        top: 50%;
+        right: 10%;
+    }
+}

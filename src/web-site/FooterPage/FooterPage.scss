@@ -1,0 +1,24 @@
+.footerpage{
+    width: 100%;
+    .wrapper{
+        // width: 99%;
+        display: flex;
+        justify-content: space-between;
+        background-color: #6699331e;
+        border: 1px solid #669933;
+        .items{
+            padding: 20px;
+            width: 30%;
+            border-left: 1px solid #669933;
+            color: #669933;
+            // background-color: aqua;
+            h2{
+                font-size: 18px;
+            }
+            p{
+                opacity: .8;
+                font-size: 14px;
+            }
+        }
+    }
+}

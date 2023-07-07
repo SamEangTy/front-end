@@ -1,4 +1,4 @@
-import { Button, Input, Space } from 'antd'
+import { Button, Input, Space, message } from 'antd'
 import './Login.scss'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -9,19 +9,22 @@ export default function LoginPage() {
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
   const handleLogin = ()=>{
-    const form = new FormData()
-    form.append('email',email)
-    form.append('password',password)
-    axios('http://localhost:8000/api/login',{
-      method:"POST",
-      data:form,
-    }).then(res=>{
-      console.log(res.data);
-      if(res.data.email){
-        localStorage.setItem("is_login","1")
-        localStorage.setItem("user_info",JSON.stringify(res.data))
-        window.location.href = "/"
-      }
+    // const form = new FormData()
+    // form.append('email',email)
+    // form.append('password',password)
+    const params = {
+      "email" : email,
+    "password": password
+    }
+    axios.post('http://localhost:8000/api/login',params).then(res=>{
+      if(res.data.user){
+        localStorage.setItem("is_login", "1"); // is_login = 1
+        localStorage.setItem("profile", JSON.stringify(res.data.user));
+        window.location.href = "/";
+        message.success(res.data.message)
+      }else if(res.data.email != email || res.data.password != password){
+        message.error(res.data.message)
+      }  
     }).catch(err=>{
       console.log(err);
     })

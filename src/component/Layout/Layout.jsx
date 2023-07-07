@@ -12,6 +12,7 @@ const { Header, Sider, Content } = Layout;
 
 const LayoutOne = (props) => {
   const [collapsed, setCollapsed] = useState(false);
+  const [profile, setProfile] = useState(false)
   const navigate = useNavigate()
   const {
     token: { colorBgContainer },
@@ -37,20 +38,19 @@ const menuItem = [
   const handleMenu = (e)=>{
     navigate(e.key);
   }
-//   useEffect(()=>{
-//     handleLogout()
-//   },[])
   const handleLogout = (e)=>{
     localStorage.clear()
-    window.location.href = '/login'
+    window.location.href = '/'
   }
+  const isLogin = (localStorage.getItem("is_login") == "1")
+  const user = JSON.parse(localStorage.getItem('profile'))
   const items = [
     {
       key: '1',
       label: (
-        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-          1st menu item
-        </a>
+          <p>
+            Profile: name
+          </p>
       ),
     },
     {
@@ -108,13 +108,13 @@ const menuItem = [
             </div>
             <Dropdown 
                 menu={{
-                    items,
+                  items,
                 }}
                 placement="bottomLeft"
                 arrow
                 >
-            <img src={logo} className='profile'/>
-                </Dropdown>
+                  <img src={logo} className='profile'/>
+            </Dropdown>
          </div>
            
         </Header>
