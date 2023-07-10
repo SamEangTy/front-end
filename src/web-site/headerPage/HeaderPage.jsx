@@ -1,8 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import "./HeaderPage.scss";
-import { MdPerson, MdShop } from "react-icons/md";
-import { Button, Dropdown } from "antd";
+import { MdKeyboardDoubleArrowUp, MdPerson, MdShop } from "react-icons/md";
+import { Dropdown } from "antd";
+import { useState } from "react";
 export default function HeaderPage() {
+  const [bgColor, setBgColor] = useState()
   const items = [
     {
       key: "1",
@@ -21,16 +23,29 @@ export default function HeaderPage() {
       ),    
     },
   ];
+  const onScrolling = ()=>{
+    const scroll = document.documentElement.scrollTop
+    if(scroll === 0){
+      setBgColor()
+    }else{
+      setBgColor({background:"white"})
+    }
+    
+  }
+  window.addEventListener('scroll',onScrolling)
+  const handleBH = ()=>{
+    window.scrollTo({top:0, behavior: 'smooth' });
+  }
   return (
-    <div className="headerpage">
+    <div className="headerpage" style={bgColor}>
       <div className="wrapper">
         <div className="left">
-          <h2>Tinh Lok</h2>
+          <h2><Link to={'/'}>Tinh Lok</Link></h2>
         </div>
         <div className="mid">
           <ul>
             <li>
-              <NavLink>Home</NavLink>
+              <NavLink to={'/'}>Home</NavLink>
             </li>
             <li>
               <NavLink>Shop</NavLink>
@@ -72,6 +87,9 @@ export default function HeaderPage() {
             </li>
           </ul>
         </div>
+      </div>
+      <div className="backhome" onClick={handleBH}>
+        <Link ><MdKeyboardDoubleArrowUp fontSize={30}/></Link>
       </div>
     </div>
   );

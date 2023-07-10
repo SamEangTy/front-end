@@ -6,8 +6,8 @@ import DashBoard from './Page/DashBoard/DashBoard';
 import ProductPage from './Page/Product/Product';
 import LayoutOne from './component/Layout/Layout';
 import LoginPage from './Page/Login/LoginPage';
-import HeaderPage from './web-site/headerPage/HeaderPage';
 import Index from './web-site/index';
+import ViewDetail from './web-site/viewDetail/ViewDetail';
 
 function App() {
   const isLogin = localStorage.getItem('is_login') == "1" // true
@@ -26,6 +26,7 @@ function App() {
     <Routes>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/' element={<Index/>}/>
+        <Route path='/view' element={<ViewDetail/>}/>
         <Route path='*' element={<h1>Route Not Found!</h1>}/>
     </Routes>
     }

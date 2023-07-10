@@ -39,7 +39,8 @@ export default function AboutPage() {
         <div className="contact">
             <div className="text">
                 <h2>Join 215,000 Fellow Marketers</h2>
-                <p>Get expert marketing tips straight to your inbox, and become a better marketer. Subscribe to the <p style={{textAlign:'center'}}>Marketing Blog below.</p></p>
+                <p>Get expert marketing tips straight to your inbox, and become a better marketer. Subscribe to the</p>
+                <p style={{textAlign:'center'}}>Marketing Blog below.</p>
             </div>
             <div className='email'>
                 <label>Email</label>
