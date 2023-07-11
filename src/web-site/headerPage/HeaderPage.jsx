@@ -3,7 +3,7 @@ import "./HeaderPage.scss";
 import { MdKeyboardDoubleArrowUp, MdPerson, MdShop } from "react-icons/md";
 import { Dropdown } from "antd";
 import { useState } from "react";
-export default function HeaderPage() {
+export default function HeaderPage(props) {
   const [bgColor, setBgColor] = useState()
   const items = [
     {
@@ -36,6 +36,7 @@ export default function HeaderPage() {
   const handleBH = ()=>{
     window.scrollTo({top:0, behavior: 'smooth' });
   }
+  
   return (
     <div className="headerpage" style={bgColor}>
       <div className="wrapper">
@@ -78,7 +79,7 @@ export default function HeaderPage() {
             </li>
            
             <li>
-              <NavLink>0</NavLink>
+              <NavLink>{props.cart}</NavLink>
             </li>
             <li>
               <NavLink>

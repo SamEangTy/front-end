@@ -10,16 +10,16 @@ import Index from './web-site/index';
 import ViewDetail from './web-site/viewDetail/ViewDetail';
 
 function App() {
-  const isLogin = localStorage.getItem('is_login') == "1" // true
+  const isLogin = localStorage.getItem('is_login') === "1" // true
   return (
   <BrowserRouter>
     {isLogin ?
     <LayoutOne>
       <Routes>
-        <Route path='/' element={<DashBoard/>}/>
-        <Route path='/customer' element={<CustomerPage/>}/>
-        <Route path='/product' element={<ProductPage/>}/>
-        <Route path='*' element={<h1>Route Not Found!</h1>}/>
+          <Route path='/' element={<DashBoard/>}/> 
+          <Route path='/customer' element={<CustomerPage/>}/>
+          <Route path='/product' element={<ProductPage/>}/>
+          <Route path='*' element={<h1>Route Not Found!</h1>}/>
       </Routes>
     </LayoutOne>
     :

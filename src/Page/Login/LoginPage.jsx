@@ -17,7 +17,7 @@ export default function LoginPage() {
       if(res.data.user){
         localStorage.setItem("is_login", "1"); // is_login = 1
         localStorage.setItem("profile", JSON.stringify(res.data.user));
-        window.location.href = "/";
+        window.location.href = "/dashboard";
         // navigate("/", { replace: true });
         message.success(res.data.message)
       }else if(res.data.email !== email || res.data.password !== password){

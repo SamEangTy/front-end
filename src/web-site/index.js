@@ -8,7 +8,7 @@ import HeaderPage from "./headerPage/HeaderPage";
 export default function index() {
   return (
     <div>
-      <HeaderPage/>
+      <HeaderPage />
       <HomPage/>
       <MenuPage/>
       <CarouselPage/>

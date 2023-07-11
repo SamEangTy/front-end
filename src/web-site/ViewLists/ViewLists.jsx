@@ -1,7 +1,20 @@
-import { Button } from 'antd'
+import { Button, Image, Input, Modal, Space } from 'antd'
 import './ViewLists.scss'
 import Product from '../Product/Product'
-export default function ViewLists() {
+import { useState } from 'react';
+export default function ViewLists(props) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  localStorage.setItem("cart", 0)
+  const handleAdd =()=>{
+    props.fun()
+    setIsModalOpen(true);
+  }
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div className='viewlists'>
       <div className="wrapper">
@@ -49,13 +62,25 @@ export default function ViewLists() {
                   <p>Mix 2 tablespoons of 63.6 g with about 250 ml of cold water, as a substitute for some of the larger or smaller intermediate dishes.</p>
             <div className='txtbottom'>
               <p style={{fontWeight:"bold"}}>Price: $199.00</p>
-              <Button className='btn'>Add to cart</Button>
+              <Button className='btn' onClick={handleAdd}>Add to cart</Button>
             </div>
         </div>
       </div>
       <div className="relatePro">
          <h1 style={{margin:"50px 0"}}>Related products</h1>
         <Product/>
+      </div>
+      <div>
+      <Modal width={"50%"} title="Your Cart" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} >
+        <Space style={{justifyContent:"space-between",display:'flex'}}>
+          <Image src="https://templates.microweber.com/protein-store/userfiles/cache/thumbnails/70/tn-product1-3-978072660.jpg"></Image>
+          <h2>Protein Pack</h2>
+          <Space>
+            <p>$199.00</p>
+            <Input placeholder='1'/>
+          </Space>
+        </Space>
+      </Modal>
       </div>
     </div>
   )
