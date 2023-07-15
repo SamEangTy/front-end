@@ -1,0 +1,38 @@
+.bodyshop{
+    // height: 100vh;
+    top: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    // height: auto;
+    // align-items: center;
+    .wrapper{
+        width: 90%;
+        display: flex;
+        .left{
+            margin-top: 80px;
+            width: 25%;
+            ul{
+                list-style-type: none;
+                li{
+                    padding: 10px;
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    cursor: pointer;
+                    h2{
+                        font-size: 20px;
+                    }
+                    p{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+        .right{
+            width: 75%;
+            margin: 0;
+        }
+    }
+}

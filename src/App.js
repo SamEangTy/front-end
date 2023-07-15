@@ -8,6 +8,9 @@ import LayoutOne from './component/Layout/Layout';
 import LoginPage from './Page/Login/LoginPage';
 import Index from './web-site/index';
 import ViewDetail from './web-site/viewDetail/ViewDetail';
+import Shop from './Shop/Shop';
+import Blog from './Blog/BLog/Blog';
+import Contact from './Contact/Contact/Contact';
 
 function App() {
   const isLogin = localStorage.getItem('is_login') === "1" // true
@@ -27,6 +30,9 @@ function App() {
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/' element={<Index/>}/>
         <Route path='/view' element={<ViewDetail/>}/>
+        <Route path='/shop' element={<Shop/>}/>
+        <Route path='/blog' element={<Blog/>}/>
+        <Route path='/contact' element={<Contact/>}/>
         <Route path='*' element={<h1>Route Not Found!</h1>}/>
     </Routes>
     }

@@ -49,13 +49,13 @@ export default function HeaderPage(props) {
               <NavLink to={'/'}>Home</NavLink>
             </li>
             <li>
-              <NavLink>Shop</NavLink>
+              <NavLink to={'/shop'}>Shop</NavLink>
             </li>
             <li>
-              <NavLink>Blog</NavLink>
+              <NavLink to={'/blog'}>Blog</NavLink>
             </li>
             <li>
-              <NavLink>Contact</NavLink>
+              <NavLink to={'/contact'}>Contact</NavLink>
             </li>
           </ul>
         </div>
