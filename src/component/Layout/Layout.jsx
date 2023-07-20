@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Layout.scss'
-import { MdDashboard, MdMessage, MdNotificationAdd, MdNotifications, MdProductionQuantityLimits, MdSupervisedUserCircle } from 'react-icons/md';
+import { MdDashboard, MdHome, MdMessage, MdNotificationAdd, MdNotifications, MdProductionQuantityLimits, MdSupervisedUserCircle } from 'react-icons/md';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -24,6 +24,11 @@ const menuItem = [
       label: 'DashBoard',
     },
     {
+      key: '/home',
+      icon: <MdHome/>,
+      label: 'HomeWeb',
+    },
+    {
       key: '/customer',
       icon: <MdSupervisedUserCircle />,
       label: 'Customer',
@@ -33,6 +38,7 @@ const menuItem = [
       icon: <MdProductionQuantityLimits />,
       label: 'Product',
     },
+   
   ]
   
   const handleMenu = (e)=>{

@@ -11,6 +11,7 @@ import ViewDetail from './web-site/viewDetail/ViewDetail';
 import Shop from './Shop/Shop';
 import Blog from './Blog/BLog/Blog';
 import Contact from './Contact/Contact/Contact';
+import HomePage from './Page/HomePage/HomePage';
 
 function App() {
   const isLogin = localStorage.getItem('is_login') === "1" // true
@@ -21,6 +22,7 @@ function App() {
       <Routes>
           <Route path='/' element={<DashBoard/>}/> 
           <Route path='/customer' element={<CustomerPage/>}/>
+          <Route path='/home' element={<HomePage/>}/>
           <Route path='/product' element={<ProductPage/>}/>
           <Route path='*' element={<h1>Route Not Found!</h1>}/>
       </Routes>

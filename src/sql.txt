@@ -1,0 +1,6 @@
+-login
+-register
+-home   
+h2 name 
+p text
+img 
