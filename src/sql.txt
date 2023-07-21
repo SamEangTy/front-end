@@ -4,3 +4,28 @@
 h2 name 
 p text
 img 
+-customer
+ cus_id
+ name
+ gender
+ dob
+ tel
+ email
+-Product
+ pro_id  primary
+ categery_id
+ price_id
+ name
+ image 
+ create at
+ update at
+-categery
+ categery_id
+ name
+ create at
+ update at
+-price
+ price_id
+ price
+ discount
+ price_discount
