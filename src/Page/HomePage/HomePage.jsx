@@ -42,13 +42,14 @@ export default function HomePage() {
       
     },
   ];
-  useEffect(()=>{
+ 
+  const getList = ()=>{
     axios.get("http://localhost:8000/api/homepage").then((res)=>{
       setData(res.data);
     }).catch((err)=>{
       console.log(err);
-    })
-  },[])
+    })  
+  }
   const handleUpdate = (item)=>{
     setIsModalOpen(true);
     setCaption(item.caption);
@@ -81,6 +82,9 @@ export default function HomePage() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+   useEffect(()=>{
+    getList()
+  },[handleOk])
   return (
     <div>
       <h2>Home Page</h2>

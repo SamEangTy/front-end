@@ -13,8 +13,8 @@ img
  email
 -Product
  pro_id  primary
- categery_id
- price_id
+ categery_id fk
+ price_id fk
  name
  image 
  create at
@@ -28,4 +28,12 @@ img
  price_id
  price
  discount
- price_discount
+-slides
+ slide_id primary
+ s_image
+-cart
+ cart_id
+ customer_id
+ pro_id
+ status
+ 

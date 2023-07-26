@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Button, Form, Image, Input, Modal, Space, Table } from 'antd';
+import  Container  from '../../component/Container/Container'
 export default function HomePage() {
   const [data, setData] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -94,7 +95,6 @@ export default function HomePage() {
   };
   return (
     <div>
-      <h2>Home Page</h2>
      <Table
       rowKey="id"
       dataSource={data}
