@@ -1,6 +1,6 @@
 import axios from "axios"
 import { message } from "antd"
-const baseUrl = "http://localhost:8080/api/"
+const baseUrl = "http://localhost:8000/api/"
 
 export const request = (method="",url="",data={}) => {
     var token = "dafsdjoeijflksjeDFASFDf"

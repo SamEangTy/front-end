@@ -1,3 +1,4 @@
+import { Children } from "react";
 import "./Container.scss";
 import { Button, Input, Spin } from "antd";
 
@@ -5,7 +6,8 @@ const container = (
     { 
      pageTitle = "PageTitle", 
      onClickBtnRight,
-     btnRight = "add title btn" 
+     btnRight = "add title btn",
+     children 
     }) => {
   return (
     <div>
@@ -21,6 +23,7 @@ const container = (
           </div>
         </div>
       </div>
+      {children}
     </div>
   );
 };

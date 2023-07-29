@@ -14,7 +14,6 @@ export default function DashBoard() {
       btnRight="Add Product"
       onClickBtnRight = {onClickBtnRight}
       >
-     </Container>
         <Model
         
         isModalOpen={isModalOpen}
@@ -22,6 +21,7 @@ export default function DashBoard() {
         handleCancel = {()=>setModalOpen(false)}
         modelTitle = "Add Product"
         />
+        </Container>
 
     </div>
   )
