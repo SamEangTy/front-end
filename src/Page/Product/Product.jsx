@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import {
   Button,
-  Checkbox,
-  Form,
   Image,
   Input,
   Modal,
@@ -13,8 +10,8 @@ import {
   message,
 } from "antd";
 import Container from "../../component/Container/Container";
-import ModelForm from "./ModelForm";
 import { request } from "../../util/api";
+import axios from "axios";
 export default function HomePage() {
   const [data, setData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,6 +20,7 @@ export default function HomePage() {
   const [image, setImage] = useState(null);
   const [price, setPrice] = useState('')
   const [discount, setDiscount] = useState('')
+  const [product_id, setProduct_id] = useState(null)
   const column = [
     {
       title: "No",
@@ -51,7 +49,7 @@ export default function HomePage() {
       title: "Price Discount",
       dataIndex: "discountPrice",
       key: "discountPrice",
-      render: (value) => <p>{parseInt(value) + "$"}</p>,
+      render: (value) => <p>{parseFloat(value) + "$"}</p>,
     },
     {
       title: "Categery Name",
@@ -102,8 +100,10 @@ export default function HomePage() {
     setPrice(item.price);
     setDiscount(item.discount);
     setCatery_id(item.categery_id);
-    setImage(item.setImage);
+    setImage(item.image);
+    setProduct_id(item.id)
   };
+  console.log(image);
   useEffect(() => {
     listProduct();
   }, []);
@@ -115,18 +115,33 @@ export default function HomePage() {
 
   const handleOk = () => {
     setIsModalOpen(false);
-    var form = new FormData();
-    form.append("name", name);
-    form.append("price", price);
-    form.append("discount", discount);
-    form.append("categery_id", categery_id);
-    form.append('image',image);
-    request("post", "addProduct", form, {}).then((res) => {
-      listProduct();
-      if (res.status === 201) {
-        message.success("Product Created Success");
-      }
-    });
+    if(product_id == null){
+      var form = new FormData();
+      form.append("name", name);
+      form.append("price", price);
+      form.append("discount", discount);
+      form.append("categery_id", categery_id);
+      form.append('image',image);
+      request("post", "addProduct", form, {}).then((res) => {
+        listProduct();
+        if (res.status === 201) {
+          message.success("Product Created Success");
+        }
+      });
+    }
+    else{
+      
+      var form = new FormData();
+      // form.append("id", product_id)
+      form.append("name", name);
+      form.append("price", price);
+      form.append("discount", discount);
+      form.append("categery_id", categery_id);
+      // form.append('image',image);
+      axios.post('http://localhost:8000/api/updateProduct/'+product_id,form).then((res)=>{
+        listProduct()
+      })
+    }
   };
   const clearForm = ()=>{
     setName('');
@@ -134,6 +149,7 @@ export default function HomePage() {
     setDiscount("");
     setCatery_id(null);
     setImage("");
+    setProduct_id(null)
   }
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -177,7 +193,7 @@ export default function HomePage() {
           size="small"
         ></Table>
         <Modal
-          title="Add Product"
+          title={product_id ? "Update Product" : "Add Product"}
           open={isModalOpen}
           onOk={handleOk}
           onCancel={handleCancel}
@@ -215,10 +231,9 @@ export default function HomePage() {
             />
             <Input
               type="file"
-              value={image}
               onChange={(e) => setImage(e.target.files[0])}
             />
-            <button onClick={clearForm}>clear</button>
+            <Image style={{width:100}} src={"http://localhost:8000/"+image}/>
           </Space>
         </Modal>
       </Container>
